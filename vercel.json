@@ -1,0 +1,25 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "server.js"
+      }
+    ],
+    "env": {
+      "JWT_SECRET_KEY": "Zavi88m4a6r5i3a21",
+      "PORT": "8081",
+      "DB_HOST": "localhost", 
+      "DB_USER": "root",      
+      "DB_PASSWORD": "maria@10",       
+      "DB_NAME": "pet_foundation",
+      "Stripe_Key":"sk_test_51PffNyA6tNiR1N27VEbMUDhw85KLmmfN634y3RoEWynmevPyMSLJN3l6mmz3vDM1o4c2Q2A0eDSgGFOGOcqDYWfq00m3mNAQmN"
+    }
+  }
+  

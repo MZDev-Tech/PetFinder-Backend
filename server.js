@@ -19,7 +19,7 @@ dotenv.config();
 
 const app = express();
 //Cors option to host
-const allowedOrigins = ['http://localhost:3000', 'https://petfinder-backend.onrender.com']; 
+const allowedOrigins = ['http://localhost:3000', 'https://petfinder-backend.vercel.app']; 
 
 const corsOptions = {
   origin: allowedOrigins,
@@ -47,7 +47,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
+  password: process.env.DB_PASSWORD ,
   database: process.env.DB_NAME,
 });
 
