@@ -18,10 +18,19 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
+//Cors option to host
+const allowedOrigins = ['http://localhost:3000', 'https://petfinder-backend.onrender.com']; 
+
+const corsOptions = {
+  origin: allowedOrigins,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Enable set cookies
+  optionsSuccessStatus: 204, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
 //Middlewares
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -69,5 +78,5 @@ app.use('/api/Dashboard/',DashboardRoutes);
 
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
-  console.log('Server listening on port 8081...');
+  console.log(`Server listening on port ${PORT}...`);
 });
