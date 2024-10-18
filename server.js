@@ -14,7 +14,8 @@ import ContactRoutes from './Routes/ContactRoute.js';
 import AdminRoutes from './Routes/AdminRoute.js';
 import AdoptionRoutes from './Routes/AdoptionRoute.js';
 import DashboardRoutes from './Routes/DashboardRoute.js'
-
+import dotenv from 'dotenv'; 
+dotenv.config();
 
 const app = express();
 
@@ -35,10 +36,10 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Database connection
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'pet_foundation',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 // Make the db connection available to the app
@@ -66,7 +67,7 @@ app.use('/api/admin/',AdminRoutes);
 app.use('/api/adoption/',AdoptionRoutes);
 app.use('/api/Dashboard/',DashboardRoutes);
 
-
-app.listen(8081, () => {
+const PORT = process.env.PORT || 8081;
+app.listen(PORT, () => {
   console.log('Server listening on port 8081...');
 });
