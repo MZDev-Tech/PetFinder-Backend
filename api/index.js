@@ -5,32 +5,24 @@ import multer from 'multer';
 import path from 'path';
 import { fileURLToPath } from 'url';
 // Import routes
-import categoryRoutes from './Routes/CategoryRoute.js'; 
-import PetRoutes from './Routes/PetsRoute.js';
-import ShelterRoutes from './Routes/ShelterRoute.js';
-import FeedbackRoutes from './Routes/FeedbackRoute.js';
-import UserRoutes from './Routes/UserRoute.js';
-import ContactRoutes from './Routes/ContactRoute.js';
-import AdminRoutes from './Routes/AdminRoute.js';
-import AdoptionRoutes from './Routes/AdoptionRoute.js';
-import DashboardRoutes from './Routes/DashboardRoute.js'
+import categoryRoutes from '../Routes/CategoryRoute.js'; 
+import PetRoutes from '../Routes/PetsRoute.js';
+import ShelterRoutes from '../Routes/ShelterRoute.js';
+import FeedbackRoutes from '../Routes/FeedbackRoute.js';
+import UserRoutes from '../Routes/UserRoute.js';
+import ContactRoutes from '../Routes/ContactRoute.js';
+import AdminRoutes from '../Routes/AdminRoute.js';
+import AdoptionRoutes from '../Routes/AdoptionRoute.js';
+import DashboardRoutes from '../Routes/DashboardRoute.js'
 import dotenv from 'dotenv'; 
 dotenv.config();
 
 const app = express();
-//Cors option to host
-const allowedOrigins = ['http://localhost:3000', 'https://petfinder-backend.vercel.app']; 
 
-const corsOptions = {
-  origin: allowedOrigins,
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true, // Enable set cookies
-  optionsSuccessStatus: 204, // Some legacy browsers (IE11, various SmartTVs) choke on 204
-};
 
 //Middlewares
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
